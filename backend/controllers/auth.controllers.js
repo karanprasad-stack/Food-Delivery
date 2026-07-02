@@ -33,7 +33,9 @@ export const signUp=async (req,res) => {
             httpOnly:true
         })
   
-        return res.status(201).json(user)
+        const userResponse = user.toObject()
+        delete userResponse.password
+        return res.status(201).json(userResponse)
 
     } catch (error) {
         return res.status(500).json(`sign up error ${error}`)
@@ -61,7 +63,9 @@ export const signIn=async (req,res) => {
             httpOnly:true
         })
   
-        return res.status(200).json(user)
+        const userResponse = user.toObject()
+        delete userResponse.password
+        return res.status(200).json(userResponse)
 
     } catch (error) {
         return res.status(500).json(`sign In error ${error}`)
@@ -148,7 +152,9 @@ export const googleAuth=async (req,res) => {
             httpOnly:true
         })
   
-        return res.status(200).json(user)
+        const userResponse = user.toObject()
+        delete userResponse.password
+        return res.status(200).json(userResponse)
 
 
     } catch (error) {
